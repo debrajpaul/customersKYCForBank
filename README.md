@@ -71,7 +71,7 @@ $ cd customersKYCForBank
 
 Once you've pushed changes to your local repository, you can issue a pull request by clicking on the green pull request icon.
 
-![Pull Request Icon](https://img.icons8.com/fluency/24/000000/pull-request.png)
+![Pull Request Icon](https://img.icons8.com/fluency/48/000000/pull-request.png)
 
 Instead of cloning the repository to your desktop, you can also go to `README.md` in your fork on GitHub.com, hit the Edit button (the button with the pencil) to edit the file in your browser, then hit the `Propose file change` button, and finally make a pull request.
 
