@@ -60,6 +60,10 @@ contract CustomerKYC is IBank,IAdmin,AccessModifier {
 	event addCustomerEvent(address customer, bytes32 indexed receiver);
 	event modifyCustomerEvent(address customer, bytes32 indexed receiver);
 	event addRequestEvent(address customer, bytes32 indexed receiver);
+	event removeRequestEvent(address customer, bytes32 indexed receiver);
+	event addBamkEvent(address customer);
+	event modifyBamkEvent(address customer);
+	event removeBamkEvent(address customer);
 
 	// function to add customer
 	function addCustomer(bytes32 _usernameOfTheCustomer, bytes32 _customerData) external returns(bool){
@@ -97,13 +101,15 @@ contract CustomerKYC is IBank,IAdmin,AccessModifier {
         requestKYCList[_usernameOfTheCustomer].customerData = _customerDataHash;
         requestKYCList[_usernameOfTheCustomer].bankAddress = msg.sender;
 		// loging new addRequest customer
-		emit addCustomerEvent(msg.sender, _usernameOfTheCustomer);
+		emit addRequestEvent(msg.sender, _usernameOfTheCustomer);
 		return true;
     }
 	// Remove the request added by the bank
     function removeRequest(bytes32 _usernameOfTheCustomer) external returns (bool) {
         require(requestKYCList[_usernameOfTheCustomer].bankAddress != address(0), "Request doesn't exist, Please try another one");
         delete requestKYCList[_usernameOfTheCustomer];
+		// loging new docs added to customer
+		emit removeRequestEvent(msg.sender, _usernameOfTheCustomer);
 		return true;
     }
 	// upvote customer request added by the bank
@@ -143,6 +149,8 @@ contract CustomerKYC is IBank,IAdmin,AccessModifier {
 		bankList[_bankAddress].KYC_count = 0;
 		bankList[_bankAddress].isAllowedToVote = true;
 		bankList[_bankAddress].regNumber = _regNumber;
+		// loging new docs added to customer
+		emit addBamkEvent(msg.sender);
 		return true;
     }
     
@@ -150,6 +158,8 @@ contract CustomerKYC is IBank,IAdmin,AccessModifier {
     function modifyBankIsAllowedToVote(address _bankAddress,bool _isVote) external isAdmin returns(bool) {
 		require(bankList[_bankAddress].ethAddress == address(0),"Invalid parameters! Bank already exist, Please try another one");
 		bankList[_bankAddress].isAllowedToVote = _isVote;
+		// loging new docs added to customer
+		emit modifyBamkEvent(msg.sender);
 		return true;
     }
     
@@ -157,6 +167,8 @@ contract CustomerKYC is IBank,IAdmin,AccessModifier {
     function removeBank(address _bankAddress) external isAdmin returns (bool) {
 		require(bankList[_bankAddress].ethAddress != address(0),"Invalid parameters! Bank doesn't exist, Please try another one");
 		delete bankList[_bankAddress];
+		// loging new docs added to customer
+		emit removeBamkEvent(msg.sender);
 		return true;
     }
 }
