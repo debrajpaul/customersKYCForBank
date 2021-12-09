@@ -60,7 +60,7 @@ Find any typos? Have another resource you think should be included? Contribution
 
 First, fork this repository.
 
-![Fork Icon](images/fork-icon.png)
+![Fork Icon](https://img.icons8.com/doodle/48/000000/code-fork.png)
 
 Next, clone this repository to your desktop to make changes.
 
@@ -71,7 +71,7 @@ $ cd customersKYCForBank
 
 Once you've pushed changes to your local repository, you can issue a pull request by clicking on the green pull request icon.
 
-![Pull Request Icon](images/pull-request-icon.png)
+![Pull Request Icon](https://img.icons8.com/fluency/24/000000/pull-request.png)
 
 Instead of cloning the repository to your desktop, you can also go to `README.md` in your fork on GitHub.com, hit the Edit button (the button with the pencil) to edit the file in your browser, then hit the `Propose file change` button, and finally make a pull request.
 
